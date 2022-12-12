@@ -79,6 +79,15 @@ public class Biseccion extends Funcion {
 		}
 	}
 	
+	/**
+	 * Método que itera :)
+	 */
+	public void iterar() {
+		Integer actual = iteraciones.get();
+		actual++;
+		iteraciones.set(actual);
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString() + "Biseccion [inf=" + inf + ", sup=" + sup + ", prod=" + prod

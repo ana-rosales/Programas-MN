@@ -62,9 +62,8 @@ public class BiseccionInicio {
 		}
 
 		if (errno == 0) {
-			System.out.println("resultado= "+current.raiz().get());
-			System.out.println("iteraciones= "+current.iteraciones().get());
-			System.out.println("derivada= "+current.derivada().get());
+			System.out.println(current.raiz().get());
+			System.out.println(current.iteraciones().get() + "");
 		} else {
 			errno = 0;
 		}
