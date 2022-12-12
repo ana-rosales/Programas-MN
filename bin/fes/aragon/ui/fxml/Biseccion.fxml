@@ -1,8 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+
+<AnchorPane prefHeight="499.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="fes.aragon.ui.controlador.BiseccionController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #EFF8F5;">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="500.0" spacing="125.0" style="-fx-background-color: #2B3C38;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bisección">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="26.0" />
+                     </font>
+                  </Text>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #AB5544; -fx-border-image-width: 0; -fx-background-radius: 25;" text="→" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+            <VBox prefHeight="300.0" prefWidth="480.0" style="-fx-background-color: #A59A9B; -fx-background-radius: 10;">
+               <children>
+                  <VBox prefHeight="100.0" prefWidth="500.0" style="-fx-border-radius: 0.5;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Función">
+                           <font>
+                              <Font name="Yu Gothic Medium" size="12.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtFuncion" opacity="0.9" style="-fx-background-color: #EFF8F5; -fx-background-radius: 5;" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="500.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="250.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Límite superior">
+                                 <font>
+                                    <Font name="Yu Gothic Medium" size="12.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtSuperior" opacity="0.9" style="-fx-background-color: #EFF8F5; -fx-background-radius: 5;" />
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="250.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Límite inferior">
+                                 <font>
+                                    <Font name="Yu Gothic Medium" size="12.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtInferior" opacity="0.9" style="-fx-background-color: #EFF8F5; -fx-background-radius: 5;" />
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="500.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Margen de error">
+                                 <font>
+                                    <Font name="Yu Gothic Medium" size="12.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="txtError" opacity="0.9" style="-fx-background-color: #EFF8F5; -fx-background-radius: 5;" />
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0">
+                           <children>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#calcular" style="-fx-border-width: 0; -fx-background-color: #2B3C38; -fx-background-radius: 5;" text="Calcular" textFill="WHITE">
+                                 <font>
+                                    <Font name="Yu Gothic Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A59A9B; -fx-background-radius: 10;">
+               <children>
+                  <VBox prefHeight="100.0" prefWidth="500.0" style="-fx-background-color: #;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtResultado" disable="true" opacity="0.7" style="-fx-background-color: #EFF8F5; -fx-background-radius: 5;" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="400.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Iteraciones">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="12.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtIteraciones" disable="true" opacity="0.7" style="-fx-background-color: #EFF8F5; -fx-background-radius: 5;" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #2B3C38;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#limpiar" prefWidth="90.0" style="-fx-background-color: #AB5544; -fx-background-radius: 25;" text="Limpiar" textFill="WHITE" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
-
