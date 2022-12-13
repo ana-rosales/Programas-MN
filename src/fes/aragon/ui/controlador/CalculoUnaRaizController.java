@@ -7,7 +7,9 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import fes.aragon.modelo.Biseccion;
+import fes.aragon.modelo.Funcion;
 import fes.aragon.modelo.NRaphson;
+import fes.aragon.modelo.NRaphson2;
 import fes.aragon.ui.GeneralControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,9 +71,9 @@ public class CalculoUnaRaizController extends GeneralControlador {
 
 		entradas(true);
 
+		try {
 		current = new Biseccion(funcion, xi, xf);
 		current.acomodarLimites();
-
 		try {
 			if (current.f(xf) * current.f(xi) < 0) {
 				do {
@@ -97,11 +99,9 @@ public class CalculoUnaRaizController extends GeneralControlador {
 			errno++;
 		}
 
-		if (errno == 0) {
-			txtResultado.setText(current.raiz().get() + "");
-			txtIteraciones.setText(current.iteraciones().get() + "");
-		} else {
-			errno = 0;
+		salida(current);
+		}catch(Exception e) {
+			errno=0;
 		}
 	}
 
@@ -127,41 +127,74 @@ public class CalculoUnaRaizController extends GeneralControlador {
 		comenzar();
 		NRaphson current;
 		entradas(false);
-		current = new NRaphson(funcion, xi, err);
+		try {
+			current = new NRaphson(funcion, xi, err);
 
-		if (current.f(xi) == 0) {
-			current.raiz().set(xi);
-		} else {
-			if (current.df(xi) != 0) {
-				int i = 0;
-				do {
-					current.siguiente();
-					current.iterar();
-					current.setDelta();
-					current.xi().set(current.xs().get());
-					txtTabla.setText(txtTabla.getText() + "\n i = " + current.iteraciones().get() + "\t|\tXi= "
-							+ current.xi().get() + "\t|\tXs= " + current.xs().get() + "\t|\tError= "
-							+ current.delta().get());
-					i++;
-				} while (current.delta().get() > err);
-				current.raiz().set(current.xi().get());
+			if (current.f(xi) == 0) {
+				current.raiz().set(xi);
+				txtTabla.setText("El punto inicial indicado, es la raíz :)");
 			} else {
-				alerta.setContentText("La derivada con respecto al punto indicado es nula.");
-				errno++;
+				if (current.df(xi) != 0) {
+					int i = 0;
+					do {
+						current.siguiente();
+						current.iterar();
+						current.setDelta();
+						current.xi().set(current.xs().get());
+						txtTabla.setText(txtTabla.getText() + "\n i = " + current.iteraciones().get() + "\t|\tXi= "
+								+ current.xi().get() + "\t|\tXs= " + current.xs().get() + "\t|\tError= "
+								+ current.delta().get());
+						i++;
+					} while (current.delta().get() > err);
+					current.raiz().set(current.xi().get());
+				} else {
+					alerta.setContentText("La derivada con respecto al punto indicado es nula.");
+					errno++;
+				}
 			}
-		}
 
-		if (errno == 0) {
-			txtResultado.setText(current.raiz().get() + "");
-			txtIteraciones.setText(current.iteraciones().get() + "");
-		} else {
-			errno = 0;
+			salida(current);
+		} catch (Exception e) {
+			errno=0;
 		}
 	}
 
 	@FXML
 	void newton2(ActionEvent event) {
 		comenzar();
+		NRaphson2 current;
+		entradas(false);
+
+		try {
+			current = new NRaphson2(funcion, xi, err);
+
+			if (current.f(xi) == 0) {
+				current.raiz().set(xi);
+				txtTabla.setText("El punto inicial indicado, es la raíz :)");
+			} else {
+				if (current.df(xi) != 0) {
+					int i = 0;
+					do {
+						current.siguiente();
+						current.iterar();
+						current.setDelta();
+						current.xi().set(current.xs().get());
+						txtTabla.setText(txtTabla.getText() + "\n i = " + current.iteraciones().get() + "\t|\tXi= "
+								+ current.xi().get() + "\t|\tXs= " + current.xs().get() + "\t|\tError= "
+								+ current.delta().get());
+						i++;
+					} while (current.delta().get() > err);
+					current.raiz().set(current.xi().get());
+				} else {
+					System.out.println("La derivada con respecto al punto indicado es nula.");
+					errno++;
+				}
+			}
+
+			salida(current);
+		} catch (Exception e) {
+			errno=0;
+		}
 
 	}
 
@@ -190,10 +223,21 @@ public class CalculoUnaRaizController extends GeneralControlador {
 			if (biseccion)
 				xf = Double.parseDouble(txtXf.getText());
 			err = Double.parseDouble(txtError.getText());
+			if (err <= 0)
+				throw new Exception("El margen de error debe ser mayor a cero.");
 		} catch (Exception e) {
 			alerta.setContentText(e.getMessage());
 			alerta.showAndWait();
 			errno++;
+		}
+	}
+
+	void salida(Funcion current) {
+		if (errno == 0) {
+			txtResultado.setText(current.raiz().get() + "");
+			txtIteraciones.setText(current.iteraciones().get() + "");
+		} else {
+			errno = 0;
 		}
 	}
 }
