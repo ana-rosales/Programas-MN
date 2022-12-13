@@ -113,8 +113,6 @@ public class CalculoUnaRaizController extends GeneralControlador {
 		err = 0.0;
 		funcion = "";
 		txtError.setText(" ");
-		txtHora.setText(" ");
-		txtFecha.setText(" ");
 		txtFuncion.setText(" ");
 		txtIteraciones.setText(" ");
 		txtResultado.setText(" ");
