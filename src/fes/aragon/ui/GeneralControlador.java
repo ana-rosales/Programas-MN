@@ -1,9 +1,17 @@
 package fes.aragon.ui;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.Calendar;
 import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class GeneralControlador {
 	protected Alert alerta;
@@ -36,5 +44,21 @@ public class GeneralControlador {
 			}
 		});
 		clock.start();
+	}
+	
+	// paginación
+	protected void navegar(Event event, URL fxmlDocName) throws IOException {
+		// Loading new fxml UI document
+		Parent pageParent = FXMLLoader.load(fxmlDocName);
+		// Creating new scene
+		Scene scene = new Scene(pageParent);
+		// get current stage
+		Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		// Hide old stage
+		appStage.hide(); // Optional
+		// Set stage with new Scene
+		appStage.setScene(scene);
+		// Show up the stage
+		appStage.show();
 	}
 }

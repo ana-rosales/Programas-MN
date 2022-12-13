@@ -1,8 +1,10 @@
 package fes.aragon.ui.controlador;
 
 import static javafx.scene.control.Alert.AlertType.WARNING;
+import static javafx.scene.control.ButtonType.OK;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -12,9 +14,11 @@ import fes.aragon.modelo.NRaphson;
 import fes.aragon.modelo.NRaphson2;
 import fes.aragon.modelo.VonMisses;
 import fes.aragon.ui.GeneralControlador;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -67,6 +71,7 @@ public class CalculoUnaRaizController extends GeneralControlador {
 
 	@FXML
 	void biseccion(ActionEvent event) {
+		clean();
 		comenzar();
 		Biseccion current;
 
@@ -108,6 +113,10 @@ public class CalculoUnaRaizController extends GeneralControlador {
 
 	@FXML
 	void limpiar(ActionEvent event) {
+		clean();
+	}
+	
+	void clean() {
 		xi = 0.0;
 		xf = 0.0;
 		err = 0.0;
@@ -123,6 +132,7 @@ public class CalculoUnaRaizController extends GeneralControlador {
 
 	@FXML
 	void newton(ActionEvent event) {
+		clean();
 		comenzar();
 		NRaphson current;
 		entradas(false);
@@ -160,6 +170,7 @@ public class CalculoUnaRaizController extends GeneralControlador {
 
 	@FXML
 	void newton2(ActionEvent event) {
+		clean();
 		comenzar();
 		NRaphson2 current;
 		entradas(false);
@@ -206,9 +217,20 @@ public class CalculoUnaRaizController extends GeneralControlador {
 	void sistema(ActionEvent event) {
 
 	}
+	
+	@FXML
+	void salir(ActionEvent event) {
+		alerta.setHeaderText("Quiere salir?");
+		alerta.setContentText("¿Está seguro de querer salir?");
+		Optional<ButtonType> resultado = alerta.showAndWait();
+		if (resultado.get().equals(OK)) {
+			Platform.exit();
+		}
+	}
 
 	@FXML
 	void vonmises(ActionEvent event) {
+		clean();
 		comenzar();
 		VonMisses current;
 		entradas(false);
