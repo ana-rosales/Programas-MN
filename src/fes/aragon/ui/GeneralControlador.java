@@ -1,14 +1,12 @@
 package fes.aragon.ui;
 
 import java.util.Calendar;
-
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.text.Text;
 
 public class GeneralControlador {
 	protected Alert alerta;
-
 	Calendar cale = Calendar.getInstance();
 	protected int year = cale.get(Calendar.YEAR);
 	protected int month = cale.get(Calendar.MONTH);
