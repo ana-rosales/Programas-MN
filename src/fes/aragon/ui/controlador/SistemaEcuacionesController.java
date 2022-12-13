@@ -5,7 +5,9 @@ import static javafx.scene.control.Alert.AlertType.WARNING;
 import static javafx.scene.control.ButtonType.OK;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import fes.aragon.ui.GeneralController;
 import javafx.application.Platform;
@@ -47,7 +49,7 @@ public class SistemaEcuacionesController extends GeneralController {
 	@FXML
 	private VBox vbxMatriz;
 
-	void initialize() {
+	public void initialize(URL url, ResourceBundle rb) {
 		alerta = new Alert(WARNING);
 		alerta.setTitle("ADVERTENCIA");
 		alerta.setHeaderText("Campo inválido.");
@@ -57,13 +59,8 @@ public class SistemaEcuacionesController extends GeneralController {
 		hora(txtHora);
 	}
 
-	void comenzar() {
-		initialize();
-	}
-
 	@FXML
 	void eliminacion(ActionEvent event) {
-		comenzar();
 
 		ObservableList<Node> data = vbxMatriz.getChildren();
 
@@ -123,7 +120,6 @@ public class SistemaEcuacionesController extends GeneralController {
 
 	@FXML
 	void generar(ActionEvent event) {
-		comenzar();
 
 		entradas();
 
@@ -181,7 +177,6 @@ public class SistemaEcuacionesController extends GeneralController {
 
 	@FXML
 	void seidal(ActionEvent event) {
-		comenzar();
 		int i = 0;
 		double coef = 0;
 		boolean iguales = true;

@@ -43,7 +43,7 @@
                            </font></Text>
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" onAction="#regresar" style="-fx-background-color: #213057;" text="→" textFill="#faf9f9">
+                  <Button mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #213057;" text="→" textFill="#faf9f9">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>

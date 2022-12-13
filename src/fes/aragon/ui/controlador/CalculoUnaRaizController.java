@@ -55,7 +55,7 @@ public class CalculoUnaRaizController extends GeneralController {
 	@FXML
 	private TextField txtXi;
 
-	void initialize() {
+	public void initialize(URL url, ResourceBundle rb) {
 		alerta = new Alert(WARNING);
 		alerta.setTitle("ADVERTENCIA");
 		alerta.setHeaderText("Campo inválido.");
@@ -65,14 +65,8 @@ public class CalculoUnaRaizController extends GeneralController {
 		hora(txtHora);
 	}
 
-	void comenzar() {
-		initialize();
-	}
-
 	@FXML
 	void biseccion(ActionEvent event) {
-		clean();
-		comenzar();
 		Biseccion current;
 
 		entradas(true);
@@ -132,8 +126,6 @@ public class CalculoUnaRaizController extends GeneralController {
 
 	@FXML
 	void newton(ActionEvent event) {
-		clean();
-		comenzar();
 		NRaphson current;
 		entradas(false);
 		try {
@@ -170,8 +162,6 @@ public class CalculoUnaRaizController extends GeneralController {
 
 	@FXML
 	void newton2(ActionEvent event) {
-		clean();
-		comenzar();
 		NRaphson2 current;
 		entradas(false);
 
@@ -230,8 +220,6 @@ public class CalculoUnaRaizController extends GeneralController {
 
 	@FXML
 	void vonmises(ActionEvent event) {
-		clean();
-		comenzar();
 		VonMisses current;
 		entradas(false);
 
