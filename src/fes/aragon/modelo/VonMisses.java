@@ -20,7 +20,6 @@ public class VonMisses extends Funcion{
 		this.xi.set(xi);
 		this.dx0.set(df(x0));
 		this.delta.set(delta);
-		System.out.println("Derivada del primer punto: " + dx0);
 	}
 	
 	public final DoubleProperty x0() {
@@ -46,9 +45,7 @@ public class VonMisses extends Funcion{
 	public void siguiente() {
 		Double xi = this.xi.get();
 		Double dx0 = this.dx0.get();
-		System.out.println("f(xi)= " + f(xi));
 		Double xs = xi-((f(xi))/dx0); 
-		System.out.println("xs= " + xs);
 		this.xs.set(xs);
 	}
 	

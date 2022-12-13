@@ -10,6 +10,7 @@ import fes.aragon.modelo.Biseccion;
 import fes.aragon.modelo.Funcion;
 import fes.aragon.modelo.NRaphson;
 import fes.aragon.modelo.NRaphson2;
+import fes.aragon.modelo.VonMisses;
 import fes.aragon.ui.GeneralControlador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +21,7 @@ import javafx.scene.text.Text;
 
 public class CalculoUnaRaizController extends GeneralControlador {
 
-	protected Double xi, xf, err;
+	protected Double x0, xi, xf, err;
 	protected String funcion;
 	protected int errno = 0;
 	@FXML
@@ -72,36 +73,36 @@ public class CalculoUnaRaizController extends GeneralControlador {
 		entradas(true);
 
 		try {
-		current = new Biseccion(funcion, xi, xf);
-		current.acomodarLimites();
-		try {
-			if (current.f(xf) * current.f(xi) < 0) {
-				do {
-					current.setRaiz();
-					current.setProducto();
-					if (current.prod().get() < 0) {
-						current.sup().set(current.raiz().get());
-					} else if (current.prod().get() > 0) {
-						current.inf().set(current.raiz().get());
-					}
-					current.setErrRaiz();
-					txtTabla.setText(txtTabla.getText() + "\ni = " + current.iteraciones().get() + "\t|\tRaíz= "
-							+ current.raiz().get() + "\t|\tXi= " + current.sup().get() + "\t|\tXf= "
-							+ current.inf().get() + "\t|\tError= " + current.errRaiz().get());
-					current.iterar();
-				} while (current.errRaiz().get() >= err);
-			} else {
-				alerta.setContentText("Entre los limites indicados, no existe raiz.");
+			current = new Biseccion(funcion, xi, xf);
+			current.acomodarLimites();
+			try {
+				if (current.f(xf) * current.f(xi) < 0) {
+					do {
+						current.setRaiz();
+						current.setProducto();
+						if (current.prod().get() < 0) {
+							current.sup().set(current.raiz().get());
+						} else if (current.prod().get() > 0) {
+							current.inf().set(current.raiz().get());
+						}
+						current.setErrRaiz();
+						txtTabla.setText(txtTabla.getText() + "\ni = " + current.iteraciones().get() + "\t|\tRaíz= "
+								+ current.raiz().get() + "\t|\tXi= " + current.sup().get() + "\t|\tXf= "
+								+ current.inf().get() + "\t|\tError= " + current.errRaiz().get());
+						current.iterar();
+					} while (current.errRaiz().get() >= err);
+				} else {
+					alerta.setContentText("Entre los limites indicados, no existe raiz.");
+					errno++;
+				}
+			} catch (Exception e) {
+				alerta.setContentText(current.error().get());
 				errno++;
 			}
-		} catch (Exception e) {
-			alerta.setContentText(current.error().get());
-			errno++;
-		}
 
-		salida(current);
-		}catch(Exception e) {
-			errno=0;
+			salida(current);
+		} catch (Exception e) {
+			errno = 0;
 		}
 	}
 
@@ -155,7 +156,7 @@ public class CalculoUnaRaizController extends GeneralControlador {
 
 			salida(current);
 		} catch (Exception e) {
-			errno=0;
+			errno = 0;
 		}
 	}
 
@@ -185,15 +186,15 @@ public class CalculoUnaRaizController extends GeneralControlador {
 						i++;
 					} while (current.delta().get() > err);
 					current.raiz().set(current.xi().get());
-				} else {
-					System.out.println("La derivada con respecto al punto indicado es nula.");
+				} else {					
+					alerta.setContentText("La derivada con respecto al punto indicado es nula.");
 					errno++;
 				}
 			}
 
 			salida(current);
 		} catch (Exception e) {
-			errno=0;
+			errno = 0;
 		}
 
 	}
@@ -211,7 +212,42 @@ public class CalculoUnaRaizController extends GeneralControlador {
 	@FXML
 	void vonmises(ActionEvent event) {
 		comenzar();
+		VonMisses current;
+		entradas(false);
 
+		try {
+			x0 = xi;
+			current = new VonMisses(funcion, x0, x0, err);
+			
+			if (current.f(xi) == 0) {
+				current.raiz().set(xi);
+				txtTabla.setText("El punto inicial indicado, es la raíz :)");
+			} else {
+				if (current.df(xi) != 0) {
+					int i = 0;
+					do {
+						current.siguiente();
+						current.iterar();
+						current.setDelta();
+						current.xi().set(current.xs().get());
+						txtTabla.setText(txtTabla.getText()
+								+ "\n i = " + current.iteraciones().get()
+								+ "\t|\tXi= " + current.xi().get()
+								+ "\t|\tXs= " + current.xs().get()
+								+ "\t|\tdX0= " + current.dx0().get()
+								+ "\t|\tError= " + current.delta().get());
+						i++;
+					} while (current.delta().get() > err);
+					current.raiz().set(current.xi().get());
+				} else {					
+					alerta.setContentText("La derivada con respecto al punto indicado es nula.");
+					errno++;
+				}
+			}
+			salida(current);
+		} catch (Exception e) {
+			errno = 0;
+		}
 	}
 
 	void entradas(boolean biseccion) {
