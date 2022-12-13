@@ -13,7 +13,7 @@ import fes.aragon.modelo.Funcion;
 import fes.aragon.modelo.NRaphson;
 import fes.aragon.modelo.NRaphson2;
 import fes.aragon.modelo.VonMisses;
-import fes.aragon.ui.GeneralControlador;
+import fes.aragon.ui.GeneralController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +23,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-public class CalculoUnaRaizController extends GeneralControlador {
+public class CalculoUnaRaizController extends GeneralController {
 
 	protected Double x0, xi, xf, err;
 	protected String funcion;

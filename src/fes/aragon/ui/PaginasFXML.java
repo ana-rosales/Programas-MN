@@ -14,7 +14,7 @@ import javafx.fxml.FXMLLoader;
  * @author mash
  */
 public enum PaginasFXML {
-	// INICIO("/fes/aragon/ui/fxml/Inicio.fxml"),
+	INICIO("/fes/aragon/ui/fxml/Inicio.fxml"),
 	UNARAIZ("/fes/aragon/ui/fxml/CalculoUnaRaiz.fxml"),
 	SISTEMA("/fes/aragon/ui/fxml/SistemaEcuaciones.fxml");
 

@@ -4,9 +4,10 @@ import static fes.aragon.ui.PaginasFXML.*;
 import static javafx.scene.control.Alert.AlertType.WARNING;
 import static javafx.scene.control.ButtonType.OK;
 
+import java.io.IOException;
 import java.util.Optional;
 
-import fes.aragon.ui.GeneralControlador;
+import fes.aragon.ui.GeneralController;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class SistemaEcuacionesController extends GeneralControlador {
+public class SistemaEcuacionesController extends GeneralController {
 
 	protected int n, m;
 	protected double[][] a;
@@ -62,7 +63,6 @@ public class SistemaEcuacionesController extends GeneralControlador {
 
 	@FXML
 	void eliminacion(ActionEvent event) {
-		clean();
 		comenzar();
 
 		ObservableList<Node> data = vbxMatriz.getChildren();
@@ -123,7 +123,6 @@ public class SistemaEcuacionesController extends GeneralControlador {
 
 	@FXML
 	void generar(ActionEvent event) {
-		clean();
 		comenzar();
 
 		entradas();
@@ -168,21 +167,20 @@ public class SistemaEcuacionesController extends GeneralControlador {
 		a = new double[0][0];
 		prod = new double[0];
 		x = new double[0];
-		txtM.setText(" ");
-		txtN.setText(" ");
-		txtTabla.setText(" ");
-		txtResultados.setText(" ");
+		txtM.setText("");
+		txtN.setText("");
+		txtTabla.setText("");
+		txtResultados.setText("");
 		vbxMatriz.getChildren().clear();
 	}
 
 	@FXML
-	void regresar(ActionEvent event) {
+	void regresar(ActionEvent event) throws IOException {
 		navegar(event, INICIO.getPagina());
 	}
 
 	@FXML
 	void seidal(ActionEvent event) {
-		clean();
 		comenzar();
 		int i = 0;
 		double coef = 0;
@@ -257,7 +255,7 @@ public class SistemaEcuacionesController extends GeneralControlador {
 	}
 
 	@FXML
-	void unaraiz(ActionEvent event) {
+	void unaraiz(ActionEvent event) throws IOException {
 		navegar(event, UNARAIZ.getPagina());
 	}
 

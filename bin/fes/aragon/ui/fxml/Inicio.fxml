@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="fes.aragon.ui.controlador.InicioController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FAF9F9;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="200.0">
+               <children>
+                  <MenuButton mnemonicParsing="false" style="-fx-background-color: #213057;" text="Menú" textFill="#faf9f9">
+                     <font>
+                        <Font name="Tw Cen MT" size="14.0" />
+                     </font>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#unaraiz" text="Cálculo de una raíz" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#sistema" text="Sistema de ecuaciones" />
+                     </items>
+                  </MenuButton>
+                  <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <Text fill="#213057" strokeType="OUTSIDE" strokeWidth="0.0" text="Programas">
+                           <font>
+                              <Font name="Tw Cen MT" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#213057" strokeType="OUTSIDE" strokeWidth="0.0" text="Métodos Numéricos">
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onAction="#salir" style="-fx-background-color: #213057;" text="→" textFill="#faf9f9">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="400.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0">
+                     <children>
+                        <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="200.0">
+                          <items>
+                            <Button mnemonicParsing="false" onAction="#unaraiz" text="Ir">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Button>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cálculo de una raíz" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Text>
+                          </items>
+                        </ToolBar>
+                        <Accordion>
+                          <panes>
+                            <TitledPane animated="false" text="Bisección" wrapText="true">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutX="-1.0" layoutY="-5.0" prefHeight="190.0" prefWidth="360.0" text="El método de bisección se aplica a funciones&#10;algebraicas o trascendentes y proporcion&#10;únicamente raıces reales. Tiene su origen en un&#10;popular algoritmo de búsqueda de datos en arreglos&#10;vectoriales denominado búsqueda binaria. Es un&#10;método cerrado, es decir, requiere de un intervalo en&#10;el cual esté atrapada una raız.">
+                                             <font>
+                                                <Font name="Tw Cen MT" size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                            </TitledPane>
+                            <TitledPane animated="false" prefWidth="360.0" text="Newton Raphson">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutX="-1.0" layoutY="-2.0" prefHeight="192.0" prefWidth="360.0" text="En análisis numérico, el método de Newton es un algoritmo para encontrar aproximaciones de los ceros o raíces de una función real. También puede ser usado para encontrar el máximo o mínimo de una función, encontrando los ceros de su primera&#10;derivada." wrapText="true">
+                                             <font>
+                                                <Font name="Tw Cen MT" size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Newton 2° Orden">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutY="-2.0" prefHeight="187.0" prefWidth="360.0" text="El método de Newton de segundo orden, tambien utiliza el conocimiento aportado por los primeros términos de la serie de Taylor de la función en la vecindad de una aproximación a la raíz. El método de Newton puede verse como un método de linealización." wrapText="true">
+                                             <font>
+                                                <Font name="Tw Cen MT" size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                            </TitledPane>
+                              <TitledPane prefHeight="200.0" prefWidth="200.0" text="Von Mises">
+                                 <content>
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="El método converge de manera cuadrática, si las siguientes condiciones se satisfacen:&#10;&#10;*La primera derivada es diferente de cero para todo valor de x dentro de un intervalo contenga a todos los valores iniciales de x.&#10;&#10;*El valor de la segunda derivada no tiende al infinito." wrapText="true">
+                                       <font>
+                                          <Font name="Tw Cen MT" size="16.0" />
+                                       </font>
+                                    </TextArea>
+                                 </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0">
+                     <children>
+                        <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="200.0">
+                          <items>
+                            <Button mnemonicParsing="false" onAction="#sistema" text="Ir">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Button>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema de ecuaciones">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Text>
+                          </items>
+                        </ToolBar>
+                        <Accordion>
+                          <panes>
+                            <TitledPane animated="false" text="Eliminación Gaussiana">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutX="-1.0" layoutY="-3.0" prefHeight="187.0" prefWidth="360.0" text="El Método de Eliminación de Gauss consiste en utilizar&#10;reiteradas veces las propiedades de los sistema&#10;lineales, que hemos visto ante- riormente, para&#10;transformar un sistema de ecuaciones lineales en otro&#10;equivalente (con las mismas soluciones) pero que sea&#10;triangular.">
+                                             <font>
+                                                <Font name="Tw Cen MT" size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Gauss-Jordan">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutX="-1.0" layoutY="-2.0" prefHeight="183.0" prefWidth="360.0" text="Este método debe su nombre a Carl Friedrich Gauss&#10;y a Wilhelm Jordan. Se trata de una serie de&#10;algoritmos del álgebra lineal para determinar los&#10;resultados de un sistema de ecuaciones lineales y así&#10;hallar matrices e inversas.">
+                                             <font>
+                                                <Font name="Tw Cen MT" size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                            </TitledPane>
+                            <TitledPane animated="false" text="Matriz Inversa">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutX="-1.0" layoutY="-4.0" prefHeight="188.0" prefWidth="360.0" text="El método de la matriz inversa permite resolver&#10;sistemas de ecuaciones lineales tomadas como&#10;ecuaciones matriciales. Recuerda que únicamente es&#10;posible calcular la matriz inversa de una matriz si es&#10;cuadrada y con determinante distinto de cero.">
+                                             <font>
+                                                <Font name="Tw Cen MT" size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                            </TitledPane>
+                              <TitledPane animated="false" text="Gauss-Seidal">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea layoutY="-2.0" prefHeight="185.0" prefWidth="360.0" text="Los métodos iterativos de Jacobi y Gauss-Seidel son&#10;los procesos de aproximaciones sucesivas para&#10;resolver sistemas de ecuaciones lineales compatibles&#10;determinados. Ambos requieren de la verificación de&#10;un criterio de convergencia comúnmente conocido&#10;como diagonal pesada.">
+                                             <font>
+                                                <Font name="Tw Cen MT" size="16.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="450.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#creditos" style="-fx-background-color: #213057;" text="Créditos" textFill="#faf9f9">
+                     <font>
+                        <Font name="Tw Cen MT" size="16.0" />
+                     </font>
+                  </Button>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Text fx:id="txtHora" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font name="Tw Cen MT" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtFecha" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font name="Tw Cen MT" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="225.0" layoutY="57.0" prefHeight="391.0" prefWidth="372.0" visible="false">
+         <children>
+            <ScrollPane prefHeight="390.0" prefWidth="372.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="371.0">
+                     <children>
+                        <TextArea layoutX="-2.0" layoutY="-5.0" prefHeight="391.0" prefWidth="372.0" text="Universidad Nacional Autónoma de México Facultad de Estudios Superiores Aragón&#10;Métodos Numéricos&#10;&#10;Programas de Métodos Numéricos&#10;Semestre 2023-I&#10;&#10;Profesor: Roberto Blanco Bautista.&#10;&#10;Integrantes del equipo:&#10;Ana Paula Rosales Olguín&#10;Pedro Alejandro Ruíz Salas&#10;Ricardo Ruíz Martínez&#10;" wrapText="true">
+                           <font>
+                              <Font name="Tw Cen MT" size="18.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -13,7 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class GeneralControlador {
+public class GeneralController {
 	protected Alert alerta;
 	Calendar cale = Calendar.getInstance();
 	protected int year = cale.get(Calendar.YEAR);
