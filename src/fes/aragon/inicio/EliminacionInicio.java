@@ -2,15 +2,21 @@ package fes.aragon.inicio;
 
 import java.util.Scanner;
 
-public class Eliminacion {
+import fes.aragon.modelo.Matriz;
+
+public class EliminacionInicio extends Matriz{
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 		int n, m;
 		
-		System.out.println("Ingrese el total de ecuaciones: ");
-		n = entrada.nextInt();
-		System.out.println("Cuántas incógnitas tienen? ");
-		m = entrada.nextInt()+1;		
+		do {
+			System.out.println("Ingrese el total de ecuaciones (positivo): ");
+			n = entrada.nextInt();
+		}while(n<0);
+		do {
+			System.out.println("Cuántas incógnitas tienen? (positivo):");
+			m = entrada.nextInt()+1;			
+		}while(m<1);
 		
 		double[][] a = new double[n][m];
 		double[] prod = new double[m];
@@ -66,15 +72,5 @@ public class Eliminacion {
 			System.out.println("X"+(i+1)+"= " +x[i]);
 		}
 		
-	}
-	
-	public static void imprimir(int n, int m, double[][] a) {
-		System.out.println();
-		for (int i = 0; i<n;i++) {
-			for(int j = 0; j<m;j++) {
-				System.out.print("a[" + i + "]["+ j +"]=" + a[i][j] + " ");
-			}
-			System.out.println();
-		}
 	}
 }
