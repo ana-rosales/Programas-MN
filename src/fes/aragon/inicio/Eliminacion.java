@@ -53,11 +53,17 @@ public class Eliminacion {
 		double amm = a[m-2][m-2];
 		x[m-2] = cm/amm;
 		
-		for(int i = m-2; i>=0;i--) {
+		for(int i = m-3; i>=0;i--) {
 			double suma = 0;
 			for (int j =m-2;j>i;j--) {
 				suma = suma -a[i][j]*x[j];
 			}
+			x[i] = (a[i][m-1]+suma)/a[i][i];
+		}
+		
+		System.out.println();
+		for(int i = 0; i<x.length;i++) {
+			System.out.println("X"+(i+1)+"= " +x[i]);
 		}
 		
 	}
